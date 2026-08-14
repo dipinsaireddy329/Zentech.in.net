@@ -33,7 +33,23 @@ import { PageNavigationLoader } from './components/PageNavigationLoader';
 import { MessageSquare, X } from 'lucide-react';
 
 export function App() {
-  const [currentRoute, setCurrentRoute] = useState<PageRoute>('home');
+
+  // Map URL pathname to route for initial load and back/forward navigation
+  const getRouteFromPath = (pathname: string): PageRoute => {
+    const path = pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
+    if (path === 'admin') return 'admin';
+    if (path === 'about') return 'about';
+    if (path === 'services') return 'services';
+    if (path === 'materials' || path === 'products') return 'products';
+    if (path === 'projects') return 'projects';
+    if (path === 'gallery') return 'gallery';
+    if (path === 'blogs') return 'blogs';
+    if (path === 'faq') return 'faq';
+    if (path === 'contact') return 'contact';
+    return 'home';
+  };
+
+  const [currentRoute, setCurrentRoute] = useState<PageRoute>(() => getRouteFromPath(window.location.pathname));
   const [isNavigating, setIsNavigating] = useState(false);
   const [navigatingTo, setNavigatingTo] = useState<PageRoute | null>(null);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
@@ -42,6 +58,15 @@ export function App() {
   const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
   const [quoteBasket, setQuoteBasket] = useState<ProductItem[]>([]);
   const [orderProductId, setOrderProductId] = useState<string | null>(null);
+
+  // Handle browser back/forward buttons
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentRoute(getRouteFromPath(window.location.pathname));
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Smooth scroll to top on page navigation
   useEffect(() => {

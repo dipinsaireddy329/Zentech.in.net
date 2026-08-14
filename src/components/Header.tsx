@@ -248,15 +248,6 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Right Action Buttons */}
           <div className="hidden lg:flex items-center space-x-3">
-            {/* Admin Portal Toggle */}
-            <button
-              onClick={() => onNavigate('admin')}
-              className="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[#F97316] text-slate-700 dark:text-amber-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer flex items-center space-x-1"
-              title="Admin Portal Login"
-            >
-              <Shield className="w-4 h-4 text-[#F97316]" />
-              <span className="text-[10px] font-bold uppercase tracking-wider hidden xl:inline">Admin</span>
-            </button>
 
             <button
               onClick={onOpenBookingModal}

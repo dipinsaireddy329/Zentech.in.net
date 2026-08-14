@@ -11,8 +11,7 @@ import {
   Twitter, 
   Youtube, 
   ShieldCheck, 
-  ExternalLink,
-  Shield 
+  ExternalLink
 } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 
@@ -170,12 +169,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuoteModal }) 
                   Frequently Asked Questions
                 </button>
               </li>
-              <li>
-                <button onClick={() => onNavigate('admin' as PageRoute)} className="text-amber-500 font-bold hover:text-amber-400 transition-colors cursor-pointer flex items-center space-x-1">
-                  <Shield className="w-3.5 h-3.5" />
-                  <span>Zentech Staff Admin Panel</span>
-                </button>
-              </li>
+
             </ul>
           </div>
 
@@ -239,8 +233,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuoteModal }) 
         </div>
 
         {/* Bottom Credits */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 pt-4">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 pt-4 pb-20">
           <p>© {new Date().getFullYear()} Zentech Construction & Engineering Solutions. All Rights Reserved.</p>
+          <button
+            onClick={() => onNavigate('admin' as PageRoute)}
+            className="flex items-center space-x-1.5 text-[10px] text-slate-500 hover:text-amber-400 transition-colors uppercase tracking-wider border border-slate-700 hover:border-amber-500/50 rounded-md px-3 py-1.5 hover:bg-slate-800/50"
+          >
+            <span>🔒</span>
+            <span>Staff Login</span>
+          </button>
         </div>
       </div>
     </footer>
