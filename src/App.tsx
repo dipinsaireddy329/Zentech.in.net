@@ -169,7 +169,7 @@ export function App() {
                 </div>
 
                 {/* 05. Why Choose Us */}
-                <div id="section-about">
+                <div id="section-whychooseus">
                   <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <WhyChooseUs 
                       onNavigate={handleNavigate} 

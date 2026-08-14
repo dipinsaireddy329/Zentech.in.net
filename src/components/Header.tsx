@@ -63,7 +63,6 @@ export const Header: React.FC<HeaderProps> = ({
       { id: 'section-home', route: 'home' },
       { id: 'section-services', route: 'services' },
       { id: 'section-products', route: 'products' },
-      { id: 'section-about', route: 'about' },
       { id: 'section-contact', route: 'contact' },
     ];
 
