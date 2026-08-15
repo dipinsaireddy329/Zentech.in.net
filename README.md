@@ -87,7 +87,7 @@ npm run start
 │   ├── data/              # Company data, services, projects, catalog, & testimonials
 │   ├── types.ts           # Shared TypeScript interfaces & types
 │   └── index.css          # Tailwind CSS global styling
-├── metadata.json          # Applet metadata
+├── metadata.json          # Application metadata
 └── package.json           # Dependencies and scripts
 ```
 
