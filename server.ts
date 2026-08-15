@@ -166,7 +166,7 @@ async function startServer() {
     const item = inMemoryInquiries.find(i => i.id === id);
     if (item) {
       if (status) item.status = status;
-      res.json({ success: true, item });
+      res.json(item);
     } else {
       res.status(404).json({ error: "Inquiry not found" });
     }
@@ -189,7 +189,7 @@ async function startServer() {
     const item = inMemoryQuotes.find(q => q.id === id);
     if (item) {
       if (status) item.status = status;
-      res.json({ success: true, item });
+      res.json(item);
     } else {
       res.status(404).json({ error: "Quote not found" });
     }
@@ -216,7 +216,7 @@ async function startServer() {
   app.post("/api/projects", (req, res) => {
     const newProj = { id: 'proj-' + Date.now(), ...req.body };
     inMemoryProjects.push(newProj);
-    res.json({ success: true, project: newProj });
+    res.json(newProj);
   });
 
   app.put("/api/projects", (req, res) => {
@@ -224,11 +224,11 @@ async function startServer() {
     const idx = inMemoryProjects.findIndex(p => p.id === id || p.id === req.body.id);
     if (idx !== -1) {
       inMemoryProjects[idx] = { ...inMemoryProjects[idx], ...req.body };
-      res.json({ success: true, project: inMemoryProjects[idx] });
+      res.json(inMemoryProjects[idx]);
     } else {
       const newProj = { id: (id as string) || 'proj-' + Date.now(), ...req.body };
       inMemoryProjects.push(newProj);
-      res.json({ success: true, project: newProj });
+      res.json(newProj);
     }
   });
 
@@ -247,7 +247,7 @@ async function startServer() {
   app.post("/api/materials", (req, res) => {
     const newMat = { id: 'mat-' + Date.now(), ...req.body };
     inMemoryMaterials.push(newMat);
-    res.json({ success: true, material: newMat });
+    res.json(newMat);
   });
 
   app.put("/api/materials", (req, res) => {
@@ -255,11 +255,11 @@ async function startServer() {
     const idx = inMemoryMaterials.findIndex(m => m.id === id || m.id === req.body.id);
     if (idx !== -1) {
       inMemoryMaterials[idx] = { ...inMemoryMaterials[idx], ...req.body };
-      res.json({ success: true, material: inMemoryMaterials[idx] });
+      res.json(inMemoryMaterials[idx]);
     } else {
       const newMat = { id: (id as string) || 'mat-' + Date.now(), ...req.body };
       inMemoryMaterials.push(newMat);
-      res.json({ success: true, material: newMat });
+      res.json(newMat);
     }
   });
 
